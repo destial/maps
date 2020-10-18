@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map proto="1.4.2" game="Sumo">
+<name>Sumo</name>
+<version>1.1.0</version>
+<objective>Score the most points by knocking your enemies off the platform!</objective>
+<authors>
+	<author uuid="73d18729-a97a-43ef-8afe-173b8b334ac3">Destial</author>
+</authors>
+<players max="30" max-overfill="35"/>
+<spawns>
+	<spawn kit="spawn"> 
+		<regions yaw="0"><cylinder base="0.5, 17, 0.5" radius="0" height="0"/></regions>
+	</spawn>
+	<default>
+		<regions yaw="90">
+			<cylinder base="0.5, 5, 0.5" radius="0" height="0"/>
+		</regions>
+	</default>
+</spawns>
+<regions>
+	<cylinder id="score" base="0.5, 0, 0.5" radius="35" height="1"/>
+	<cylinder id="player-spawn" base="0.5, 17, 0.5" radius="0" height="0"/>
+	<apply block="never">
+		<region>
+			<everywhere/>
+		</region>
+	</apply>
+</regions>
+<score>
+	<kills>1</kills>
+	<deaths>0</deaths>
+</score>
+<kits>
+    <kit id="spawn">
+      <effect duration="oo" amplifier="5">damage resistance</effect>
+	  <effect duration="oo" amplifier="10">saturation</effect>
+    </kit>
+</kits>
+<time result="score">5m</time>
+</map>

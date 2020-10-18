@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map proto="1.1.1">
+<name>Bullet</name>
+<version>1.1.0</version>
+<objective>Break the obsidian from the enemy team's monument.</objective>
+<authors>
+	<author uuid="73d18729-a97a-43ef-8afe-173b8b334ac3">Destial</author>
+</authors>
+<teams>
+    <team color="yellow" max="18">Yellow Team</team>
+    <team color="dark purple" max="18">Purple Team</team>
+</teams>
+<maxbuildheight>90</maxbuildheight>
+<spawns>
+	<spawn kit="yellow-kit" team="yellow" yaw="180">
+		<cuboid min="0.5, 69, 53.5" max="0.5, 69, 53.5"/>
+	</spawn>
+	<spawn kit="purple-kit" team="purple" yaw="0">
+		<cuboid min="0.5, 69, -52.5" max="0.5, 69, -52.5"/>
+	</spawn>
+	<default yaw="90">
+		<cuboid  min="34.5, 95, 0.5" max="34.5, 95, 0.5"/>
+	</default>
+</spawns>
+<filters>
+    <filter name="only-yellow">
+        <team>yellow</team>
+    </filter>
+    <filter name="only-purple">
+        <team>purple</team>
+    </filter>
+</filters>
+<regions>
+	<apply enter="only-yellow" message="You may not enter the enemy team's base!">
+		<cuboid min="3, 72, 57" max="-3, 68, 46"/>
+		<cuboid min="-2, 64 ,56" max="2, 67, 47"/>
+	</apply>
+	<apply enter="only-purple" message="You may not enter the enemy team's base!">
+		<cuboid min="3, 72, -57" max="-3, 68, -46"/>
+		<cuboid min="-2, 64 ,-56" max="2, 67, -47"/>
+	</apply>
+	<apply block="deny-all" message="You may not modify the base!">
+        <cuboid min="3, 73, 57" max="-3, 68, 46"/>
+        <cuboid min="3, 73, -57" max="-3, 68, -46"/>
+    </apply>
+</regions>
+<destroyables name="Left" materials="obsidian" completion="100%">
+    <destroyable owner="yellow">
+		<cuboid min="13, 73, 85" max="13, 73, 85"/>
+    </destroyable>
+    <destroyable owner="purple">
+        <cuboid min="-13, 73, -85" max="-13, 73, -85"/>
+    </destroyable>
+</destroyables>
+<destroyables name="Right" materials="obsidian" completion="100%">
+    <destroyable owner="yellow">
+        <cuboid min="-13, 73, 85" max="-13, 73, 85"/>
+    </destroyable>
+    <destroyable owner="purple">
+		<cuboid min="13, 73, -85" max="13, 73, -85"/>
+    </destroyable>
+</destroyables>
+<kits>
+    <kit name="default">
+      <item slot="0">iron sword</item>
+      <item slot="1">bow</item>
+      <item slot="2" enchantment="dig speed:1">diamond pickaxe</item>
+      <item slot="7" amount="64">cooked chicken</item>
+      <item slot="4" amount="1">golden apple</item>
+      <item slot="6" amount="32">log</item>
+      <item slot="5" amount="64">glass</item>
+      <item slot="28" amount="8">arrow</item>
+    </kit>
+	<kit name="yellow-kit" parents="default">
+        <helmet color="cdcd00" unbreakable="true">leather helmet</helmet>
+        <chestplate color="cdcd00" unbreakable="true">leather chestplate</chestplate>
+        <leggings color="cdcd00" unbreakable="true">leather leggings</leggings>
+        <boots color="cdcd00" unbreakable="true">leather boots</boots>
+    </kit>
+	<kit name="purple-kit" parents="default">
+        <helmet color="cd00cd" unbreakable="true">leather helmet</helmet>
+        <chestplate color="cd00cd" unbreakable="true">leather chestplate</chestplate>
+        <leggings color="cd00cd" unbreakable="true">leather leggings</leggings>
+        <boots color="cd00cd" unbreakable="true">leather boots</boots>
+    </kit>
+</kits>
+<toolrepair>
+    <tool>iron sword</tool>
+    <tool>diamond pickaxe</tool>
+    <tool>bow</tool>
+</toolrepair>
+<itemremove>
+    <item>arrow</item>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+	<item>leather leggings</item>
+	<item>leather boots</item>
+    <item>cooked chicken</item>
+    <item>obsidian</item>
+	<item>wood</item>
+	<item>log</item>
+	<item>glass</item>
+	<item>golden apple</item>
+</itemremove>
+<killreward>
+    <item>golden apple</item>
+	<item amount="4">arrow</item>
+</killreward>
+<time result="tie">30m</time>
+</map>

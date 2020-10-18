@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<map proto="1.3.2">
+<name>Bullet CTW</name>
+<version>1.0.6</version>
+<objective>Capture the enemies wool and return it to your base.</objective>
+<authors>
+    <author uuid="73d18729-a97a-43ef-8afe-173b8b334ac3">Destial</author>
+</authors>
+<wools team="yellow">
+    <wool color="red">
+        <block>0, 70, 56</block>
+    </wool>
+    <wool color="blue">
+        <block>0, 70, 47</block>
+    </wool>
+</wools>
+<wools team="purple">
+    <wool color="lime">
+        <block>0, 70, -56</block>
+    </wool>
+    <wool color="orange">
+        <block>0, 70, -47</block>
+    </wool>
+</wools>
+<teams>
+    <team color="dark purple" max="18">Purple</team>
+    <team color="yellow" max="18">Yellow</team>
+</teams>
+<spawns>
+    <spawn team="purple" kit="purple-kit" yaw="0">
+        <cylinder base="0.5, 69, -52.5" radius="1" height="0"/>
+    </spawn>
+    <spawn team="yellow" kit="yellow-kit" yaw="180">
+        <cylinder base="0.5, 69, 53.5" radius="1" height="0"/>
+    </spawn>
+    <default yaw="90">
+        <block>34.5, 95, 0.5</block>
+    </default>
+</spawns>
+<kits>
+    <kit name="default">
+        <item slot="0">iron sword</item>
+        <item slot="1">bow</item>
+        <item slot="28" amount="8">arrow</item>
+        <item slot="2">diamond pickaxe</item>
+        <item slot="4" amount="32">cooked chicken</item>
+        <item slot="3" amount="3">golden apple</item>
+        <item slot="5" amount="32">log</item>
+        <item slot="6" amount="64">glass</item>
+    </kit>
+    <kit name="purple-kit" parents="default">
+        <helmet color="cd00cd" unbreakable="true">leather helmet</helmet>
+        <chestplate color="cd00cd" unbreakable="true">leather chestplate</chestplate>
+        <leggings color="cd00cd" unbreakable="true">leather leggings</leggings>
+        <boots color="cd00cd" unbreakable="true">leather boots</boots>
+    </kit>
+	<kit name="yellow-kit" parents="default">
+        <helmet color="cdcd00" unbreakable="true">leather helmet</helmet>
+        <chestplate color="cdcd00" unbreakable="true">leather chestplate</chestplate>
+        <leggings color="cdcd00" unbreakable="true">leather leggings</leggings>
+        <boots color="cdcd00" unbreakable="true">leather boots</boots>
+    </kit>
+</kits>
+<toolrepair>
+    <tool>iron sword</tool>
+    <tool>bow</tool>
+    <tool>diamond pickaxe</tool>
+</toolrepair>
+<itemremove>
+    <item>golden apple</item>
+    <item>arrow</item>
+    <item>cooked chicken</item>
+    <item>log</item>
+    <item>wood</item>
+    <item>glass</item>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>leather leggings</item>
+    <item>leather boots</item>
+</itemremove>
+<killreward>
+    <item amount="1">golden apple</item>
+	<item amount="4">arrow</item>
+</killreward>
+<filters>
+    <filter name="only-purple">
+        <team>purple</team>
+    </filter>
+    <filter name="only-yellow">
+        <team>yellow</team>
+    </filter>
+</filters>
+<regions>
+    <apply block="deny-all" message="You may not edit that!">
+        <cuboid min="3, 73, 57" max="-3, 68, 46"/>
+		<cuboid min="3, 73, -57" max="-3, 68, -46"/>
+		<cuboid min="16, 63, 88" max="10, 83, 82"/>
+		<cuboid min="-10, 63, 88" max="-16, 83, 82" />
+		<cuboid min="-10, 63, -88" max="-16, 83, -82"/>
+		<cuboid min="10, 63, -88" max="16, 83, -82"/>
+    </apply>
+    <apply enter="only-purple" message="You may not enter Purple's base!">
+        <cuboid min="3, 73, -57" max="-3, 68, -46"/>
+		<cuboid min="-2, 64 ,-56" max="2, 67, -47"/>
+    </apply>
+    <apply enter="only-yellow" message="You may not enter Yellow's base!">
+        <cuboid min="3, 73, 57" max="-3, 68, 46"/>
+		<cuboid min="-2, 64 ,56" max="2, 67, 47"/>
+    </apply>
+    <apply enter="only-yellow" use="only-yellow" message="You may not enter your wool room!">
+        <rectangle min="-10, -88" max="-16, -82"/>
+		<rectangle min="10, -88" max="16, -82"/>
+    </apply>
+    <apply enter="only-purple" use="only-purple" message="You may not enter your wool room!">
+        <rectangle min="-10, 88" max="-16, 82" />
+		<rectangle min="16, 88" max="10, 82"/>
+    </apply>
+</regions>
+<time result="objectives">30m</time>
+<maxbuildheight>90</maxbuildheight>
+</map>
