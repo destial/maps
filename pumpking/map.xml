@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<map proto="1.3.0">
+<include src="tutorial.xml"/>
+<name>Pumpking</name>
+<version>1.0.0</version>
+<objective>Capture the wool and return it to your victory monument.</objective>
+<authors>
+    <author>donna_wrb</author>
+    <author>Destial</author>
+</authors>
+<teams>
+    <team color="white" max="20">White</team>
+    <team color="dark gray" max="20">Black</team>
+</teams>
+<spawns>
+    <spawn team="white" kit="white-kit" yaw="-90">
+        <point>-365.5, 54, -117.5</point>
+    </spawn>
+    <spawn team="black" kit="black-kit" yaw="90">
+        <point>-259.5, 54, -117.5</point>
+    </spawn>
+    <default yaw="180">
+        <point>-312.5, 70, -57.5</point>
+    </default>
+</spawns>
+<kits>
+    <kit name="default">
+        <item slot="0" enchantment="knockback:2">stick</item>
+        <item slot="1">bow</item>
+        <item slot="2" enchantment="durability:2">shears</item>
+        <item slot="6" amount="64">glass</item>
+        <item slot="4" amount="32">pumpkin pie</item>
+        <item slot="3" amount="1">golden apple</item>
+        <item slot="28" amount="4">arrow</item>
+        <potion duration="3" amplifier="10">damage resistance</potion>
+    </kit>
+    <kit name="white-kit" parents="default">
+        <chestplate color="ffffff" unbreakable="true">leather chestplate</chestplate>
+        <boots color="ffffff" unbreakable="true">leather boots</boots>
+	<item slot="5" amount="64">wool</item>
+    </kit>
+	<kit name="black-kit" parents="default">
+        <chestplate color="000000" unbreakable="true">leather chestplate</chestplate>
+        <boots color="000000" unbreakable="true">leather boots</boots>
+	<item slot="5" amount="64" damage="15">wool</item>
+    </kit>
+</kits>
+<toolrepair>
+    <tool>stick</tool>
+    <tool>bow</tool>
+    <tool>shears</tool>
+</toolrepair>
+<itemremove>
+    <item>wool</item>
+    <item>leather chestplate</item>
+    <item>leather boots</item>
+    <item>pumpkin pie</item>
+    <item>glass</item>
+    <item>arrow</item>
+    <item>golden apple</item>
+</itemremove>
+<killreward>
+    <item amount="1">golden apple</item>
+    <item amount="2">arrow</item>
+</killreward>
+<filters>
+    <filter name="white">
+        <team>white</team>
+    </filter>
+    <filter name="black">
+        <team>black</team>
+    </filter>
+    <filter name="anti-grief-white" parents="white">
+        <deny>
+            <block>chest</block>
+        </deny>
+    </filter>
+    <filter name="anti-grief-black" parents="black">
+        <deny>
+            <block>chest</block>
+        </deny>
+    </filter>
+    <filter name="only-white-usage">
+        <not>
+            <all>
+                <any>
+                    <block>chest</block>
+                    <block>workbench</block>
+                </any>
+                <team>black</team>
+            </all>
+        </not>
+    </filter>
+    <filter name="only-black-usage">
+        <not>
+            <all>
+                <any>
+                    <block>chest</block>
+                    <block>workbench</block>
+                </any>
+                <team>white</team>
+            </all>
+        </not>
+    </filter>
+</filters>
+<regions>
+    <!-- Applied -->
+    <apply enter="black" message="You may not enter enemy base!">
+        <cuboid min="-245, 38, -99" max="-272, 60, -136"/>
+    </apply>
+    <apply enter="white" message="You may not enter enemy base!">
+        <cuboid min="-382, 38, -135" max="-348, 60, -99"/>
+    </apply>
+    <apply enter="anti-grief-white" message="You cannot enter your own wool room!">
+        <cuboid min="-259, 28, -134" max="-245, 38, -99"/>
+    </apply>
+    <apply enter="anti-grief-black" message="You cannot enter your own wool room!">
+        <cuboid min="-368, 28, -99" max="-382, 38, -135"/>
+    </apply>
+    <apply block="anti-grief-white" use="only-white-usage">
+        <cuboid min="-259, 28, -134" max="-245, 38, -99"/>
+    </apply>
+    <apply block="anti-grief-black" use="only-black-usage">
+        <cuboid min="-368, 28, -99" max="-382, 38, -135"/>
+    </apply>
+</regions>
+<wools team="white">
+    <wool color="purple">
+        <block>-371, 50, -118</block>
+    </wool>
+</wools>
+<wools team="black">
+    <wool color="magenta">
+        <block>-255, 50, -118</block>
+    </wool>
+</wools>
+<maxbuildheight>60</maxbuildheight>
+</map>
